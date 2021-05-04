@@ -18,10 +18,8 @@ export default {
     methods: {
         addTodo: function(){
             if(this.newTodoItem !== '') {
-                var obj = {completed: false, item: this.newTodoItem};
-                //저장하는 로직
-                localStorage.setItem(this.newTodoItem, JSON.stringify(obj)); 
-                //JSON.stringfy는 객체를 스트링화 시켜주는 것. 그냥 obj를 넣으면 변환이 안되서 localStorage에서 확인 불가능.
+                // this.$emit('이벤트 이름', 인자1, 인자2, ...);
+                this.$emit('addTodoItem', this.newTodoItem);
                 this.clearInput();
             }
             
