@@ -2,7 +2,7 @@
   <div id="app">
     <todo-header></todo-header>
     <todo-input v-on:addTodoItem="addOneItem"></todo-input>
-    <todo-list v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem"></todo-list>
+    <todo-list v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"></todo-list>
     <todo-footer></todo-footer>
   </div>
 </template>
@@ -32,7 +32,14 @@
         //event로 넘어오는 아이템이 객체 형태로 이루어져있다.
         //해당 키값이 아이템 이름과 같으므로, todoItem.item으로 해당 키를 삭제해주는 방식.
         this.todoItems.splice(index, 1);
+      },
+      toggleOneItem: function(todoItem, index) {
+        // todoItem.completed = !todoItem.completed;
+        this.todoItems[index].completed = !this.todoItems[index].completed;
+        localStorage.removeItem(todoItem.item);
+        localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
       }
+      
     },
     created: function() {
         if(localStorage.length > 0) {
