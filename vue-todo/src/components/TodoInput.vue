@@ -29,7 +29,7 @@ export default {
         }
     },
     methods: {
-        addTodo: function(){
+        addTodo(){
             if(this.newTodoItem !== '') {
                 // this.$emit('이벤트 이름', 인자1, 인자2, ...);
                 this.$emit('addTodoItem', this.newTodoItem);
@@ -39,13 +39,13 @@ export default {
             }
             
         },
-        clearInput: function() {
+        clearInput() {
             //input 박스 비워주기
             this.newTodoItem = '';
         }
     },
     components: {
-        Modal: Modal
+        Modal
     }
 }
 </script>
