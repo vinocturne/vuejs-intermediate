@@ -2,7 +2,7 @@
   <div>
       <transition-group name="list" tag="ul">
       
-          <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem" class="shadow"> 
+          <li v-for="(todoItem, index) in this.$store.state.todoItems" v-bind:key="todoItem" class="shadow"> 
               <i class="checkBtn far fa-check-square" v-bind:class="{checkBtnCompleted: todoItem.completed}" v-on:click="toggleComplete(todoItem, index)"></i>
               <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span> 
 
